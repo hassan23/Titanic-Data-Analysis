@@ -11796,7 +11796,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[29]:</div>
+<div class="prompt input_prompt">In&nbsp;[39]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># Rendering plots inline</span>
@@ -11819,7 +11819,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[30]:</div>
+<div class="prompt input_prompt">In&nbsp;[40]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="n">titanic_data</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
@@ -11833,7 +11833,7 @@ div#notebook {
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[30]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[40]:</div>
 
 <div class="output_html rendered_html output_subarea output_execute_result">
 <div>
@@ -11944,7 +11944,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[31]:</div>
+<div class="prompt input_prompt">In&nbsp;[41]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="n">titanic_data</span><span class="o">.</span><span class="n">tail</span><span class="p">()</span>
@@ -11958,7 +11958,7 @@ div#notebook {
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[31]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[41]:</div>
 
 <div class="output_html rendered_html output_subarea output_execute_result">
 <div>
@@ -12079,7 +12079,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[32]:</div>
+<div class="prompt input_prompt">In&nbsp;[42]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="k">print</span> <span class="s1">&#39;There are total {} rows in the data set&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">titanic_data</span><span class="p">))</span>
@@ -12122,7 +12122,7 @@ There are total 891 rows in the data set
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[33]:</div>
+<div class="prompt input_prompt">In&nbsp;[43]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="n">missing_age</span> <span class="o">=</span> <span class="n">titanic_clean_data</span><span class="p">[</span><span class="s1">&#39;Age&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span>
@@ -12158,9 +12158,52 @@ There are total 891 rows in the data set
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>So missing ages are a lot, it will effect out data analysis, especially for males.</p>
+<p>So we are going to make a variable which contain the info of passangers who has age. And we use this variable where we need to analyse the data by age.</p>
 
 </div>
 </div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[44]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="c1">#dropping the rows where age is missing </span>
+<span class="n">passangers_with_age</span> <span class="o">=</span> <span class="n">titanic_clean_data</span><span class="p">[[</span><span class="s1">&#39;Survived&#39;</span><span class="p">,</span><span class="s1">&#39;Sex&#39;</span><span class="p">,</span><span class="s1">&#39;Pclass&#39;</span><span class="p">,</span><span class="s1">&#39;Age&#39;</span><span class="p">,</span><span class="s1">&#39;SibSp&#39;</span><span class="p">,</span><span class="s1">&#39;Parch&#39;</span><span class="p">,</span><span class="s1">&#39;Fare&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">axis</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+
+<span class="c1">#description of rows remained</span>
+<span class="n">passangers_with_age</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+Int64Index: 714 entries, 0 to 890
+Data columns (total 7 columns):
+Survived    714 non-null int64
+Sex         714 non-null object
+Pclass      714 non-null int64
+Age         714 non-null float64
+SibSp       714 non-null int64
+Parch       714 non-null int64
+Fare        714 non-null float64
+dtypes: float64(2), int64(4), object(1)
+memory usage: 44.6+ KB
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
 </div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
@@ -12173,7 +12216,7 @@ There are total 891 rows in the data set
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[34]:</div>
+<div class="prompt input_prompt">In&nbsp;[45]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="n">titanic_clean_data</span><span class="p">[[</span><span class="s1">&#39;Survived&#39;</span><span class="p">,</span><span class="s1">&#39;Pclass&#39;</span><span class="p">,</span><span class="s1">&#39;Age&#39;</span><span class="p">,</span><span class="s1">&#39;SibSp&#39;</span><span class="p">,</span><span class="s1">&#39;Parch&#39;</span><span class="p">,</span><span class="s1">&#39;Fare&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
@@ -12187,7 +12230,7 @@ There are total 891 rows in the data set
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[34]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[45]:</div>
 
 <div class="output_html rendered_html output_subarea output_execute_result">
 <div>
@@ -12298,7 +12341,7 @@ There are total 891 rows in the data set
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[35]:</div>
+<div class="prompt input_prompt">In&nbsp;[46]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># setting the size of the graph</span>
@@ -12325,11 +12368,11 @@ There are total 891 rows in the data set
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[35]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[46]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>&lt;matplotlib.axes._subplots.AxesSubplot at 0x1224d358&gt;</pre>
+<pre>&lt;matplotlib.axes._subplots.AxesSubplot at 0xe9508d0&gt;</pre>
 </div>
 
 </div>
@@ -12615,7 +12658,7 @@ kiH6/7VbxwIAAAAAg/ytx7C/KAIAgEmiAQBgkmgAAJgCleZBg6x+3RgAAAAASUVORK5CYII=
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[36]:</div>
+<div class="prompt input_prompt">In&nbsp;[47]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1">#setting the title</span>
@@ -12633,11 +12676,11 @@ kiH6/7VbxwIAAAAAg/ytx7C/KAIAgEmiAQBgkmgAAJgCleZBg6x+3RgAAAAASUVORK5CYII=
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[36]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[47]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>&lt;matplotlib.axes._subplots.AxesSubplot at 0x12740fd0&gt;</pre>
+<pre>&lt;matplotlib.axes._subplots.AxesSubplot at 0xd615eb8&gt;</pre>
 </div>
 
 </div>
@@ -13542,7 +13585,7 @@ RK5CYII=
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[37]:</div>
+<div class="prompt input_prompt">In&nbsp;[48]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="n">titanic_more_clean_data</span> <span class="o">=</span> <span class="n">titanic_clean_data</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;PassengerId&#39;</span><span class="p">,</span><span class="s1">&#39;Name&#39;</span><span class="p">,</span><span class="s1">&#39;Ticket&#39;</span><span class="p">,</span><span class="s1">&#39;Cabin&#39;</span><span class="p">,</span><span class="s1">&#39;Fare&#39;</span><span class="p">,</span><span class="s1">&#39;Embarked&#39;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
@@ -13555,7 +13598,7 @@ RK5CYII=
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[38]:</div>
+<div class="prompt input_prompt">In&nbsp;[49]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1">#making cell for multiple plots</span>
@@ -13583,11 +13626,11 @@ RK5CYII=
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[38]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[49]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>&lt;matplotlib.legend.Legend at 0x12b1df98&gt;</pre>
+<pre>&lt;matplotlib.legend.Legend at 0xf030ac8&gt;</pre>
 </div>
 
 </div>
@@ -13927,16 +13970,16 @@ SVJF/wcID1yyXMOOEwAAAABJRU5ErkJggg==
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[39]:</div>
+<div class="prompt input_prompt">In&nbsp;[50]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># plotting a histogram to depict the relation between survival and age</span>
 <span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-<span class="n">sns</span><span class="o">.</span><span class="n">distplot</span><span class="p">(</span><span class="n">titanic_more_clean_data</span><span class="p">[(</span><span class="n">titanic_more_clean_data</span><span class="p">[</span><span class="s1">&#39;Survived&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)][</span><span class="s1">&#39;Age&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span><span class="n">bins</span><span class="o">=</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">80</span><span class="p">,</span><span class="mi">5</span><span class="p">),</span><span class="n">hist_kws</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span><span class="n">ax</span><span class="o">=</span><span class="n">ax1</span><span class="p">)</span>
-<span class="n">sns</span><span class="o">.</span><span class="n">distplot</span><span class="p">(</span><span class="n">titanic_more_clean_data</span><span class="p">[(</span><span class="n">titanic_more_clean_data</span><span class="p">[</span><span class="s1">&#39;Survived&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="o">&amp;</span> \
-                                     <span class="p">(</span><span class="n">titanic_more_clean_data</span><span class="p">[</span><span class="s1">&#39;Sex&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;female&#39;</span><span class="p">)][</span><span class="s1">&#39;Age&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span><span class="n">bins</span><span class="o">=</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">80</span><span class="p">,</span><span class="mi">5</span><span class="p">),</span><span class="n">hist_kws</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span><span class="n">ax</span><span class="o">=</span><span class="n">ax2</span><span class="p">)</span>
-<span class="n">sns</span><span class="o">.</span><span class="n">distplot</span><span class="p">(</span><span class="n">titanic_more_clean_data</span><span class="p">[(</span><span class="n">titanic_more_clean_data</span><span class="p">[</span><span class="s1">&#39;Survived&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="o">&amp;</span> \
-                                     <span class="p">(</span><span class="n">titanic_more_clean_data</span><span class="p">[</span><span class="s1">&#39;Sex&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;male&#39;</span><span class="p">)][</span><span class="s1">&#39;Age&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span><span class="n">bins</span><span class="o">=</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">80</span><span class="p">,</span><span class="mi">5</span><span class="p">),</span><span class="n">hist_kws</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span><span class="n">ax</span><span class="o">=</span><span class="n">ax2</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">distplot</span><span class="p">(</span><span class="n">passangers_with_age</span><span class="p">[(</span><span class="n">passangers_with_age</span><span class="p">[</span><span class="s1">&#39;Survived&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)][</span><span class="s1">&#39;Age&#39;</span><span class="p">],</span><span class="n">bins</span><span class="o">=</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">80</span><span class="p">,</span><span class="mi">5</span><span class="p">),</span><span class="n">hist_kws</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span><span class="n">ax</span><span class="o">=</span><span class="n">ax1</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">distplot</span><span class="p">(</span><span class="n">passangers_with_age</span><span class="p">[(</span><span class="n">passangers_with_age</span><span class="p">[</span><span class="s1">&#39;Survived&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="o">&amp;</span> \
+                                     <span class="p">(</span><span class="n">passangers_with_age</span><span class="p">[</span><span class="s1">&#39;Sex&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;female&#39;</span><span class="p">)][</span><span class="s1">&#39;Age&#39;</span><span class="p">],</span><span class="n">bins</span><span class="o">=</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">80</span><span class="p">,</span><span class="mi">5</span><span class="p">),</span><span class="n">hist_kws</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span><span class="n">ax</span><span class="o">=</span><span class="n">ax2</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">distplot</span><span class="p">(</span><span class="n">passangers_with_age</span><span class="p">[(</span><span class="n">passangers_with_age</span><span class="p">[</span><span class="s1">&#39;Survived&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="o">&amp;</span> \
+                                     <span class="p">(</span><span class="n">passangers_with_age</span><span class="p">[</span><span class="s1">&#39;Sex&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;male&#39;</span><span class="p">)][</span><span class="s1">&#39;Age&#39;</span><span class="p">],</span><span class="n">bins</span><span class="o">=</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">80</span><span class="p">,</span><span class="mi">5</span><span class="p">),</span><span class="n">hist_kws</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span><span class="n">ax</span><span class="o">=</span><span class="n">ax2</span><span class="p">)</span>
 
 <span class="n">fig</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">hspace</span><span class="o">=.</span><span class="mi">5</span><span class="p">)</span>
 
@@ -13958,11 +14001,11 @@ SVJF/wcID1yyXMOOEwAAAABJRU5ErkJggg==
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[39]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[50]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>&lt;matplotlib.legend.Legend at 0x12e5a2e8&gt;</pre>
+<pre>&lt;matplotlib.legend.Legend at 0x1055ddd8&gt;</pre>
 </div>
 
 </div>
@@ -14662,7 +14705,7 @@ EEIIsQokaAshhBBCCLEKJGgLIYQQQgixCv4/R6JCb83ZMx4AAAAASUVORK5CYII=
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="take-aways-from-the-above-graphs">take aways from the above graphs<a class="anchor-link" href="#take-aways-from-the-above-graphs">&#182;</a></h3><p><strong> But before that I like to mention that I am excluding the passangers whose age is not given, because those passangers is effecting my analysis and there is no way to verify that.</strong></p>
+<h3 id="take-aways-from-the-above-graphs">take aways from the above graphs<a class="anchor-link" href="#take-aways-from-the-above-graphs">&#182;</a></h3><p><strong> Note that I am using the variable passangers_with_age which has the info of only those passangers whose age is available in the data set.</strong></p>
 <ul>
 <li><p>From the First graph we can say that the adults between 20 to 40 were give higher proirity followed by children, mostly new borns and aged between 0 to 5.</p>
 </li>
@@ -14675,20 +14718,20 @@ EEIIsQokaAshhBBCCLEKJGgLIYQQQgixCv4/R6JCb83ZMx4AAAAASUVORK5CYII=
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[40]:</div>
+<div class="prompt input_prompt">In&nbsp;[51]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1">#putting the title</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;survival of passangers above the age of 50&#39;</span><span class="p">)</span>
 
 <span class="c1">#showing the plot</span>
-<span class="n">sns</span><span class="o">.</span><span class="n">distplot</span><span class="p">(</span><span class="n">titanic_more_clean_data</span><span class="p">[(</span><span class="n">titanic_more_clean_data</span><span class="p">[</span><span class="s1">&#39;Survived&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="o">&amp;</span> \
-                                     <span class="p">(</span><span class="n">titanic_more_clean_data</span><span class="p">[</span><span class="s1">&#39;Sex&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;female&#39;</span><span class="p">)</span> <span class="o">&amp;</span> \
-                                    <span class="p">(</span><span class="n">titanic_more_clean_data</span><span class="p">[</span><span class="s1">&#39;Age&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">50</span> <span class="p">)][</span><span class="s1">&#39;Age&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span><span class="n">hist_kws</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span><span class="n">bins</span><span class="o">=</span><span class="nb">range</span><span class="p">(</span><span class="mi">40</span><span class="p">,</span><span class="mi">85</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">distplot</span><span class="p">(</span><span class="n">passangers_with_age</span><span class="p">[(</span><span class="n">passangers_with_age</span><span class="p">[</span><span class="s1">&#39;Survived&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="o">&amp;</span> \
+                                     <span class="p">(</span><span class="n">passangers_with_age</span><span class="p">[</span><span class="s1">&#39;Sex&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;female&#39;</span><span class="p">)</span> <span class="o">&amp;</span> \
+                                    <span class="p">(</span><span class="n">passangers_with_age</span><span class="p">[</span><span class="s1">&#39;Age&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">50</span> <span class="p">)][</span><span class="s1">&#39;Age&#39;</span><span class="p">],</span> <span class="n">hist_kws</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span><span class="n">bins</span><span class="o">=</span><span class="nb">range</span><span class="p">(</span><span class="mi">40</span><span class="p">,</span><span class="mi">85</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
 
-<span class="n">sns</span><span class="o">.</span><span class="n">distplot</span><span class="p">(</span><span class="n">titanic_more_clean_data</span><span class="p">[(</span><span class="n">titanic_more_clean_data</span><span class="p">[</span><span class="s1">&#39;Survived&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="o">&amp;</span> \
-                                     <span class="p">(</span><span class="n">titanic_more_clean_data</span><span class="p">[</span><span class="s1">&#39;Sex&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;male&#39;</span><span class="p">)</span> <span class="o">&amp;</span> \
-                                    <span class="p">(</span><span class="n">titanic_more_clean_data</span><span class="p">[</span><span class="s1">&#39;Age&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">50</span> <span class="p">)][</span><span class="s1">&#39;Age&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span><span class="n">hist_kws</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span><span class="n">bins</span><span class="o">=</span><span class="nb">range</span><span class="p">(</span><span class="mi">40</span><span class="p">,</span><span class="mi">85</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">distplot</span><span class="p">(</span><span class="n">passangers_with_age</span><span class="p">[(</span><span class="n">passangers_with_age</span><span class="p">[</span><span class="s1">&#39;Survived&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="o">&amp;</span> \
+                                     <span class="p">(</span><span class="n">passangers_with_age</span><span class="p">[</span><span class="s1">&#39;Sex&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;male&#39;</span><span class="p">)</span> <span class="o">&amp;</span> \
+                                    <span class="p">(</span><span class="n">passangers_with_age</span><span class="p">[</span><span class="s1">&#39;Age&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">50</span> <span class="p">)][</span><span class="s1">&#39;Age&#39;</span><span class="p">],</span> <span class="n">hist_kws</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span><span class="n">bins</span><span class="o">=</span><span class="nb">range</span><span class="p">(</span><span class="mi">40</span><span class="p">,</span><span class="mi">85</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
 <span class="c1">#putting the labels</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Survival Density&#39;</span><span class="p">)</span>
 
@@ -14704,11 +14747,11 @@ EEIIsQokaAshhBBCCLEKJGgLIYQQQgixCv4/R6JCb83ZMx4AAAAASUVORK5CYII=
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[40]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[51]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>&lt;matplotlib.legend.Legend at 0x1316d518&gt;</pre>
+<pre>&lt;matplotlib.legend.Legend at 0xedda7f0&gt;</pre>
 </div>
 
 </div>
@@ -15331,7 +15374,7 @@ NhCoAQBgA4EaAAA2EKgBAGADgRoAADb4D38XImuHkiHUAAAAAElFTkSuQmCC
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[41]:</div>
+<div class="prompt input_prompt">In&nbsp;[52]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1">#filtering data on the basis of their parents and siblings</span>
@@ -15385,7 +15428,7 @@ there are 537 no of passangers who have neither sibling nor parents/children on 
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[42]:</div>
+<div class="prompt input_prompt">In&nbsp;[53]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1">#making cell for multiple plots</span>
@@ -15423,11 +15466,11 @@ there are 537 no of passangers who have neither sibling nor parents/children on 
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[42]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[53]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>&lt;matplotlib.legend.Legend at 0x139d5390&gt;</pre>
+<pre>&lt;matplotlib.legend.Legend at 0x10ed1828&gt;</pre>
 </div>
 
 </div>
@@ -15812,7 +15855,7 @@ JEmSVNH/A2d3XiYvv3KMAAAAAElFTkSuQmCC
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[43]:</div>
+<div class="prompt input_prompt">In&nbsp;[54]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1">#making the cell for multiple plots</span>
@@ -15850,11 +15893,11 @@ JEmSVNH/A2d3XiYvv3KMAAAAAElFTkSuQmCC
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[43]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[54]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>&lt;matplotlib.legend.Legend at 0x13fa6198&gt;</pre>
+<pre>&lt;matplotlib.legend.Legend at 0x1178dda0&gt;</pre>
 </div>
 
 </div>
@@ -16234,7 +16277,7 @@ UZckSZJq6P8BuSKIJt55ekkAAAAASUVORK5CYII=
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[44]:</div>
+<div class="prompt input_prompt">In&nbsp;[55]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1">#enabling the cell multiple plots</span>
@@ -16272,11 +16315,11 @@ UZckSZJq6P8BuSKIJt55ekkAAAAASUVORK5CYII=
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[44]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[55]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>&lt;matplotlib.legend.Legend at 0x145658d0&gt;</pre>
+<pre>&lt;matplotlib.legend.Legend at 0x11d4b6d8&gt;</pre>
 </div>
 
 </div>
@@ -16702,7 +16745,7 @@ uCRJklQTk3FJkiSpJibjkiRJUk3+P3JmhZL+3329AAAAAElFTkSuQmCC
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[45]:</div>
+<div class="prompt input_prompt">In&nbsp;[56]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1">#enabling the cell for multiple plots </span>
@@ -16740,11 +16783,11 @@ uCRJklQTk3FJkiSpJibjkiRJUk3+P3JmhZL+3329AAAAAElFTkSuQmCC
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[45]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[56]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>&lt;matplotlib.legend.Legend at 0x14ea9a58&gt;</pre>
+<pre>&lt;matplotlib.legend.Legend at 0x1232aa58&gt;</pre>
 </div>
 
 </div>
@@ -17145,7 +17188,7 @@ mKBLkiRJNWKCLkmSJNXI/wdKxqRArOzAmgAAAABJRU5ErkJggg==
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[46]:</div>
+<div class="prompt input_prompt">In&nbsp;[57]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="k">print</span> <span class="n">passangers_with_sib</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;Pclass&#39;</span><span class="p">,</span><span class="s1">&#39;Sex&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">mean</span><span class="p">()[</span><span class="s1">&#39;Survived&#39;</span><span class="p">]</span>
@@ -17278,7 +17321,7 @@ Name: Survived, dtype: float64
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[47]:</div>
+<div class="prompt input_prompt">In&nbsp;[58]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="k">def</span> <span class="nf">group_by_age</span><span class="p">(</span><span class="n">age</span><span class="p">):</span>
@@ -17300,7 +17343,7 @@ Name: Survived, dtype: float64
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[48]:</div>
+<div class="prompt input_prompt">In&nbsp;[59]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="n">titanic_more_clean_data</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
@@ -17314,7 +17357,7 @@ Name: Survived, dtype: float64
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[48]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[59]:</div>
 
 <div class="output_html rendered_html output_subarea output_execute_result">
 <div>
@@ -17395,7 +17438,7 @@ Name: Survived, dtype: float64
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[49]:</div>
+<div class="prompt input_prompt">In&nbsp;[60]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1">#sowing the plot</span>
@@ -17414,11 +17457,11 @@ Name: Survived, dtype: float64
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[49]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[60]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>&lt;matplotlib.text.Text at 0x14f25dd8&gt;</pre>
+<pre>&lt;matplotlib.text.Text at 0x11a2e7f0&gt;</pre>
 </div>
 
 </div>
@@ -17601,7 +17644,7 @@ QmCC
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[50]:</div>
+<div class="prompt input_prompt">In&nbsp;[61]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1">#filtering data on the basis of parents</span>
@@ -17635,7 +17678,7 @@ Survival percentage of childrens without their parents is 50.0
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[51]:</div>
+<div class="prompt input_prompt">In&nbsp;[62]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
@@ -17665,11 +17708,11 @@ Survival percentage of childrens without their parents is 50.0
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[51]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[62]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>&lt;matplotlib.text.Text at 0x15414160&gt;</pre>
+<pre>&lt;matplotlib.text.Text at 0x12cfc048&gt;</pre>
 </div>
 
 </div>
@@ -18459,7 +18502,7 @@ tZluE6hPAAAAAElFTkSuQmCC
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[52]:</div>
+<div class="prompt input_prompt">In&nbsp;[63]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
@@ -18491,11 +18534,11 @@ tZluE6hPAAAAAElFTkSuQmCC
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[52]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[63]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>&lt;matplotlib.text.Text at 0x157da860&gt;</pre>
+<pre>&lt;matplotlib.text.Text at 0x12f89898&gt;</pre>
 </div>
 
 </div>
@@ -18737,7 +18780,7 @@ SeOwZ08N9uwOOcMsSZIkFTjDLEmSJBUYmCVJkqQCA7MkSZJUYGCWJEmSCgzMkiRJUoGBWZIkSSr4
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[53]:</div>
+<div class="prompt input_prompt">In&nbsp;[64]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1">#filtering data on the basis of sibling</span>
@@ -18772,7 +18815,7 @@ Survival percentage of old passangers without siblings is 21.0526315789
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[54]:</div>
+<div class="prompt input_prompt">In&nbsp;[65]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
@@ -18804,11 +18847,11 @@ Survival percentage of old passangers without siblings is 21.0526315789
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[54]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[65]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>&lt;matplotlib.text.Text at 0x15eaa208&gt;</pre>
+<pre>&lt;matplotlib.text.Text at 0x13277be0&gt;</pre>
 </div>
 
 </div>
@@ -19086,7 +19129,7 @@ EeWRxYDCCQAAAABJRU5ErkJggg==
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[55]:</div>
+<div class="prompt input_prompt">In&nbsp;[66]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1">#filtering data on the basis of siblings</span>
@@ -19121,7 +19164,7 @@ Survival percentage of old passangers with the siblings is 32.6007326007
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[56]:</div>
+<div class="prompt input_prompt">In&nbsp;[67]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
@@ -19153,11 +19196,11 @@ Survival percentage of old passangers with the siblings is 32.6007326007
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[56]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[67]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>&lt;matplotlib.text.Text at 0x1614f0f0&gt;</pre>
+<pre>&lt;matplotlib.text.Text at 0x1353f400&gt;</pre>
 </div>
 
 </div>
